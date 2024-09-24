@@ -1,0 +1,142 @@
+{
+	"info": {
+		"_postman_id": "4ba6b3fc-fc3c-4d59-b2ad-92392381e386",
+		"name": "Collection Data Management",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20138278"
+	},
+	"item": [
+		{
+			"name": "add",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"bankName\": \"Sample test Name\",\n    \"propertyName\": \"Sample Descriptions\",\n    \"city\": \"Sample test Name\",\n    \"borrowerName\": \"Sample Descriptions\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:4000/cases",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"cases"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/cases/66ab4be53e36c546793a4c46",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"cases",
+						"66ab4be53e36c546793a4c46"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Updated Name\",\n    \"description\": \"Updated Description\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:4000/cases/66ab4be53e36c546793a4c46",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"cases",
+						"66ab4be53e36c546793a4c46"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/cases/66ab4be53e36c546793a4c46",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"cases",
+						"66ab4be53e36c546793a4c46"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/cases/aggregated?startDate=2024-09-01&endDate=2024-09-31",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"cases",
+						"aggregated"
+					],
+					"query": [
+						{
+							"key": "startDate",
+							"value": "2024-09-01"
+						},
+						{
+							"key": "endDate",
+							"value": "2024-09-31"
+						},
+						{
+							"key": "city",
+							"value": "Seattle",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
