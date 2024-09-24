@@ -54,7 +54,10 @@ const sendOtp = async (email, otp) => {
 const registerUser = async (req, res) => {
     try {
         const { email, password } = req.body;
-
+        if (!email || !password) {
+            return res.status(400).send({ message: "Both email and password are required fields." });
+        }
+        
         const existingUser = await User.findOne({ email });
         if (existingUser) {
             return res.status(400).send({ message: "Email already in use." });
@@ -78,10 +81,16 @@ const registerUser = async (req, res) => {
 const verifyOtpAndRegister = async (req, res) => {
     try {
         const { email, otp } = req.body;
-
+        if (!email || !otp) {
+            return res.status(400).send({ message: "Both email and otp are required fields." });
+        }
+        
         if (req.session && parseInt(req.session.otp) === otp && req.session.email === email) {
             const { email, password } = req.session;
-
+            if (!email || !password) {
+                return res.status(400).send({ message: "Both email and password are required fields." });
+            }
+            
             const hashedPassword = await bcrypt.hash(password, 10);
             const newUser = new User({
                 email,
