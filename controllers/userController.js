@@ -34,14 +34,14 @@ const transporter = nodemailer.createTransport({
     service: 'gmail', // or your email service
     auth: {
         user: 'patelmitaxi2001@gmail.com', // your email
-        pass: 'your-email-password', // your email password or app password
+        pass: 'taev dfkn hjtp tbwu', // your email password or app password
     },
 });
 
 // Generate OTP and send email
 const sendOtp = async (email, otp) => {
     const mailOptions = {
-        from: 'your-email@example.com',
+        from: 'patelmitaxi2001@gmail.com',
         to: email,
         subject: 'Your OTP Code',
         text: `Your OTP code is ${otp}. It is valid for 5 minutes.`,
@@ -53,7 +53,7 @@ const sendOtp = async (email, otp) => {
 // User registration
 const registerUser = async (req, res) => {
     try {
-        const { email, password, otp } = req.body;
+        const { email, password } = req.body;
 
         const existingUser = await User.findOne({ email });
         if (existingUser) {
@@ -67,7 +67,9 @@ const registerUser = async (req, res) => {
         // Save the OTP temporarily (you may want to use a more secure way, like in-memory cache)
         req.session.otp = otpCode; // Assuming you're using express-session or a similar package
         req.session.email = email; // Store email for verification
+        req.session.password = password;
 
+        console.log(req.session)
         return res.status(200).send({ message: "OTP sent to your email." });
     } catch (error) {
         console.error("Error sending OTP:", error);
@@ -78,12 +80,12 @@ const registerUser = async (req, res) => {
 // OTP Verification and User Creation
 const verifyOtpAndRegister = async (req, res) => {
     try {
-        const { otp } = req.body;
+        const { email, otp } = req.body;
 
         // Check if the OTP matches and is still valid
-        if (req.session.otp === otp) {
+        if (req.session && parseInt(req.session.otp) === otp && req.session.email === email) {
             // Proceed with user registration
-            const { email, password } = req.body;
+            const { email, password } = req.session;
 
             const hashedPassword = await bcrypt.hash(password, 10);
             const newUser = new User({
@@ -97,7 +99,6 @@ const verifyOtpAndRegister = async (req, res) => {
                 expiresIn: '1h',
             });
 
-            // Clear OTP after successful registration
             delete req.session.otp;
 
             res.status(201).send({ message: "User registered successfully.", user: savedUser, token });

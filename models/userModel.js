@@ -9,7 +9,7 @@ const onedaouser = new mongoose.Schema({
     password: {
         type: String,
         requred: true
-    }
+    },
 });
 
 module.exports = mongoose.model("onedaouser", onedaouser);
