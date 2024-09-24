@@ -1,0 +1,262 @@
+{
+	"info": {
+		"_postman_id": "6a26e8b4-f516-4ce2-80c1-e451083f99b7",
+		"name": "CRUD User + Product",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20138278"
+	},
+	"item": [
+		{
+			"name": "add user",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"test@yopmail.com\",\n    \"password\": \"yourpassword\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/users/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"users",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"test@yopmail.com\",\n    \"password\": \"yourpassword\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/users/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"users",
+						"login"
+					]
+				},
+				"description": "Generated from cURL: curl -X POST http://localhost:3000/users \\\n-H \"Content-Type: application/json\" \\\n-d '{\"email\": \"user@example.com\", \"password\": \"yourpassword\"}'\n"
+			},
+			"response": []
+		},
+		{
+			"name": "add product",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NmYyYjUwYzI0YjEwYWEyMjEyZmYwYjgiLCJpYXQiOjE3MjcxODIyOTMsImV4cCI6MTcyNzE4NTg5M30.BoVt4pPMNFnSyFO1FTfEkjaj5rUJ_ktqoOIhf_vf15Y"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"productName\": \"Sample Product\",\n    \"description\": \"This is a sample product.\",\n    \"price\": 29.99,\n    \"category\": \"Electronics\",\n    \"stockQuantity\": 100\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"products"
+					]
+				},
+				"description": "Generated from cURL: curl -X POST http://localhost:3000/products \\\n-H \"Content-Type: application/json\" \\\n-H \"Authorization: Bearer YOUR_JWT_TOKEN\" \\\n-d '{\n    \"productName\": \"Sample Product\",\n    \"description\": \"This is a sample product.\",\n    \"price\": 29.99,\n    \"category\": \"Electronics\",\n    \"stockQuantity\": 100\n}'\n"
+			},
+			"response": []
+		},
+		{
+			"name": "get all products",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NmYyYjUwYzI0YjEwYWEyMjEyZmYwYjgiLCJpYXQiOjE3MjcxODIyOTMsImV4cCI6MTcyNzE4NTg5M30.BoVt4pPMNFnSyFO1FTfEkjaj5rUJ_ktqoOIhf_vf15Y"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:4000/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"products"
+					]
+				},
+				"description": "Generated from cURL: curl -X GET http://localhost:3000/products \\\n-H \"Authorization: Bearer YOUR_JWT_TOKEN\"\n"
+			},
+			"response": []
+		},
+		{
+			"name": "get by product id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NmYyYjUwYzI0YjEwYWEyMjEyZmYwYjgiLCJpYXQiOjE3MjcxODIyOTMsImV4cCI6MTcyNzE4NTg5M30.BoVt4pPMNFnSyFO1FTfEkjaj5rUJ_ktqoOIhf_vf15Y"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:4000/products/66f2b66e3ba6e7aa8b2bef05",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"products",
+						"66f2b66e3ba6e7aa8b2bef05"
+					]
+				},
+				"description": "Generated from cURL: curl -X GET http://localhost:3000/products/PRODUCT_ID \\\n-H \"Authorization: Bearer YOUR_JWT_TOKEN\"\n"
+			},
+			"response": []
+		},
+		{
+			"name": "update product",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NmYyYjUwYzI0YjEwYWEyMjEyZmYwYjgiLCJpYXQiOjE3MjcxODIyOTMsImV4cCI6MTcyNzE4NTg5M30.BoVt4pPMNFnSyFO1FTfEkjaj5rUJ_ktqoOIhf_vf15Y"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"productName\": \"Updated Product\",\n    \"description\": \"This is an updated sample product.\",\n    \"price\": 19.99,\n    \"category\": \"Electronics\",\n    \"stockQuantity\": 150\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/products/66f2b66e3ba6e7aa8b2bef05",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"products",
+						"66f2b66e3ba6e7aa8b2bef05"
+					]
+				},
+				"description": "Generated from cURL: curl -X PUT http://localhost:3000/products/PRODUCT_ID \\\n-H \"Content-Type: application/json\" \\\n-H \"Authorization: Bearer YOUR_JWT_TOKEN\" \\\n-d '{\n    \"productName\": \"Updated Product\",\n    \"description\": \"This is an updated sample product.\",\n    \"price\": 19.99,\n    \"category\": \"Electronics\",\n    \"stockQuantity\": 150\n}'\n"
+			},
+			"response": []
+		},
+		{
+			"name": "delete product",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NmYyYjUwYzI0YjEwYWEyMjEyZmYwYjgiLCJpYXQiOjE3MjcxODIyOTMsImV4cCI6MTcyNzE4NTg5M30.BoVt4pPMNFnSyFO1FTfEkjaj5rUJ_ktqoOIhf_vf15Y"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:4000/products/66f2b66e3ba6e7aa8b2bef05",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"products",
+						"66f2b66e3ba6e7aa8b2bef05"
+					]
+				},
+				"description": "Generated from cURL: curl -X DELETE http://localhost:3000/products/PRODUCT_ID \\\n-H \"Authorization: Bearer YOUR_JWT_TOKEN\"\n"
+			},
+			"response": []
+		},
+		{
+			"name": "verify otp",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"test@yopmail.com\",\n    \"otp\": 416682\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/users/verify-otp",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"users",
+						"verify-otp"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
