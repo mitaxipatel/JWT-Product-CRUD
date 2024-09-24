@@ -18,10 +18,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(session({
-  secret: 'your_secret_key', // Change this to a strong secret key
+  secret: 'testesttset', 
   resave: false,
   saveUninitialized: true,
-  cookie: { maxAge: 60000 } // Set cookie expiration time (e.g., 1 minute)
+  cookie: { maxAge: 60000 } 
 }));
 
 // Use routes

@@ -31,10 +31,10 @@ const loginUser = async (req, res) => {
 
 // Create a transporter for sending emails
 const transporter = nodemailer.createTransport({
-    service: 'gmail', // or your email service
+    service: 'gmail', 
     auth: {
-        user: 'patelmitaxi2001@gmail.com', // your email
-        pass: 'taev dfkn hjtp tbwu', // your email password or app password
+        user: 'patelmitaxi2001@gmail.com', 
+        pass: 'taev dfkn hjtp tbwu', 
     },
 });
 
@@ -60,16 +60,13 @@ const registerUser = async (req, res) => {
             return res.status(400).send({ message: "Email already in use." });
         }
 
-        // Generate a random OTP
-        const otpCode = Math.floor(100000 + Math.random() * 900000).toString(); // 6-digit OTP
+        const otpCode = Math.floor(100000 + Math.random() * 900000).toString(); 
         await sendOtp(email, otpCode);
 
-        // Save the OTP temporarily (you may want to use a more secure way, like in-memory cache)
-        req.session.otp = otpCode; // Assuming you're using express-session or a similar package
-        req.session.email = email; // Store email for verification
+        req.session.otp = otpCode;
+        req.session.email = email;
         req.session.password = password;
 
-        console.log(req.session)
         return res.status(200).send({ message: "OTP sent to your email." });
     } catch (error) {
         console.error("Error sending OTP:", error);
@@ -82,9 +79,7 @@ const verifyOtpAndRegister = async (req, res) => {
     try {
         const { email, otp } = req.body;
 
-        // Check if the OTP matches and is still valid
         if (req.session && parseInt(req.session.otp) === otp && req.session.email === email) {
-            // Proceed with user registration
             const { email, password } = req.session;
 
             const hashedPassword = await bcrypt.hash(password, 10);
